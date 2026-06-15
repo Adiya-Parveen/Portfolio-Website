@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Adiya Parveen</title>
+    <!-- Google Fonts: Clean, modern sans-serif for professional feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;   /* pure black background */
+            color: #e5e5e5;             /* soft off-white text, easy on eyes */
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            font-weight: 400;
+            scroll-behavior: smooth;
+        }
+
+        /* subtle texture / grain (optional for depth) */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0) 80%);
+            z-index: -1;
+        }
+
+        /* container for consistent width */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ========== HEADER & NAVIGATION ========== */
+        header {
+            padding: 1.8rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #ffffff 0%, #b0b0b0 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+        }
+        .logo span {
+            font-weight: 300;
+            color: #aaa;
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.8rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #dddddd;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: -0.2px;
+            transition: color 0.2s ease;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid transparent;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #ffffff;
+            border-bottom-color: #ffffff;
+        }
+
+        /* mobile responsive nav */
+        .menu-icon {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #eee;
+        }
+
+        /* sections general */
+        .page-section {
+            padding: 5rem 0 6rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+            background: linear-gradient(to right, #fff, #aaa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .section-sub {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #999;
+            margin-bottom: 1rem;
+        }
+
+        /* home hero */
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+        }
+        .hero-content h1 {
+            font-size: 4.2rem;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.03em;
+        }
+        .hero-highlight {
+            color: #ffffff;
+            border-bottom: 2px solid rgba(255,255,255,0.4);
+        }
+        .hero-desc {
+            font-size: 1.2rem;
+            max-width: 600px;
+            color: #bcbcbc;
+            margin-bottom: 2rem;
+        }
+        .btn-outline-light {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.25s;
+            background: transparent;
+        }
+        .btn-outline-light:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: white;
+        }
+
+        /* about grid */
+        .about-grid {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        .about-text {
+            flex: 2;
+        }
+        .about-text p {
+            margin-bottom: 1.4rem;
+            color: #ccc;
+            font-size: 1.05rem;
+        }
+        .about-stats {
+            flex: 1;
+            background: rgba(255,255,255,0.03);
+            padding: 2rem;
+            border-radius: 24px;
+            backdrop-filter: blur(4px);
+        }
+        .stat-item {
+            margin-bottom: 1.8rem;
+        }
+        .stat-number {
+            font-size: 2.4rem;
+            font-weight: 600;
+            color: white;
+            display: block;
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #aaa;
+        }
+
+        /* PROJECTS cards */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        .service-card {
+            background: rgba(20,20,20,0.6);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 28px;
+            padding: 2rem 1.8rem;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .service-card:hover {
+            border-color: rgba(255,255,255,0.2);
+            transform: translateY(-5px);
+        }
+        .service-icon {
+            font-size: 2.3rem;
+            color: #ddd;
+            margin-bottom: 1.2rem;
+        }
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+            color: #fff;
+        }
+        .service-card p {
+            color: #b5b5b5;
+            font-size: 0.95rem;
+        }
+
+        /*Contact Page*/
+
+    .social-card{
+    display:flex;
+    align-items:center;
+    gap:24px;
+    padding:24px 0;
+    text-decoration:none;
+    color:#ffffff;   /* Makes all text white */
+    }
+    /* Makes text small and spacing*/
+    .social-links{
+    width: 100%;
+    max-width: 600px;
+    margin-top: 60px;
+    }
+
+    .social-card{
+    display:flex;
+    align-items:center;
+    gap:20px;
+
+    padding:28px 0;
+
+    border-bottom:1px solid rgba(255,255,255,0.08);
+
+    text-decoration:none;
+    color:white;
+
+    transition:all .3s ease;
+    }
+
+    .social-card:hover{
+    transform:translateX(8px);
+    }
+
+    .social-icon{
+    width:40px;
+    height:40px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:22px;
+
+    color:white;
+
+    flex-shrink:0;
+    }
+
+    .social-content{
+    flex:1;
+    }
+
+    .social-content h3{
+    font-size:20px;
+    font-weight:600;
+    margin-bottom:4px;
+    color:white;
+    }
+
+    .social-content p{
+    font-size:16px;
+    color:#9c9c9c;
+    margin:0;
+    }
+
+    .social-arrow{
+    font-size:22px;
+    color:#b5b5b5;
+    }
+
+    .social-card:hover .social-arrow{
+    color:white;
+    }
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.8rem;
+            color: #666;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* responsive */
+        @media (max-width: 800px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+                padding: 1.5rem 0;
+            }
+            .nav-links.show {
+                display: flex;
+            }
+            .menu-icon {
+                display: block;
+            }
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+        @media (max-width: 550px) {
+            .about-grid {
+                flex-direction: column;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="navbar">
+            <a href="#" class="logo" data-page="home">Adiya<span>Parveen</span></a>
+            <div class="menu-icon" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" data-page="home" class="nav-link active">Home</a></li>
+                <li><a href="#" data-page="about" class="nav-link">About</a></li>
+                <li><a href="#" data-page="projects" class="nav-link">Projects</a></li>
+                <li><a href="#" data-page="contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<main id="main-content">
+    <!-- HOME PAGE SECTION (default visible) -->
+    <section id="home-page" class="page-section hero" style="display: flex;">
+        <div class="container">
+            <div class="hero-content">
+                <p>CONTENT OPERATIONS • KNOWLEDGE MANAGEMENT • TECHNICAL DOCUMENTATION</p>
+                <h1>Transforming Content,<br> <span class="hero-highlight">Into Knowledge Systems</span></h1>
+                <p class="hero-desc">Technical Writer with experience in .NET Development,
+                 Content Operations, and Process Improvement.</p>
+                <p>I design structured, searchable, and scalable <br>
+                    content ecosystems through governance,<br>
+                    metadata strategy, taxonomy design,<br>
+                    and knowledge management.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT PAGE SECTION -->
+    <section id="about-page" class="page-section" style="display: none;">
+        <div class="container">
+            <div class="section-sub">— About me</div>
+            <div class="section-title">Adiya Parveen</div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p><h2>I have experience across:</h2><br>
+
+• .NET Development<br>
+• Technical Writing<br>
+• Process Operations<br>
+<br><br>
+<h2>I enjoy solving problems related to:</h2><br>
+
+• Knowledge Management<br>
+• Content Operations<br>
+• Information Architecture<br>
+• Documentation Strategy</p>
+                </div>
+                <div class="about-stats">
+                        <p><h2>Skills</h2><br>
+                        • .NET<br>
+                        • Technical Documentation<br>
+                        • Content Governance<br>
+                        • Metadata Management<br>
+                        • Taxonomy Design<br>
+                        • Content Audits <br>
+                        • Knowledge Management<br>
+                        • Process Improvement<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS PAGE SECTION -->
+    <!-- 
+    <section id="projects-page" class="page-section" style="display: none;">
+        <div class="container">
+            <div class="section-sub">— what we offer</div>
+            <div class="section-title">Precision .</div>
+            <div class="projects-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-pen-fancy"></i></div>
+                    <h3>Brand identity</h3>
+                    <p>Distinct visual language, minimal logos, typography systems, and monochromatic palettes that last.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-code"></i></div>
+                    <h3>Web design & dev</h3>
+                    <p>High-performance websites with dark UI, fluid interactions, and pixel-perfect responsiveness.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Digital strategy</h3>
+                    <p>Data-informed storytelling, content architecture, and UX frameworks for modern brands.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-camera-retro"></i></div>
+                    <h3>Art direction</h3>
+                    <p>Curated creative direction, editorial assets, and black & white visual storytelling.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+-->
+    <!-- CONTACT PAGE SECTION -->
+    <section id="contact-page" class="page-section" style="display: none;">
+        <div class="container">
+            <div class="section-sub">— get in touch</div>
+            <div class="section-title">Let's connect & create impact.</div>
+          <div class="contact-wrapper">
+            <div>
+                <p>I am always open to new opportunities, collaborations, and meaningful conversations.
+                    Feel free to reach out through any of the platforms below.</p>
+            </div>
+            <div>
+            <section class="social-links">
+                <a href="https://github.com/Adiya-Parveen" target="_blank" class="social-card">
+                <div class="social-icon">
+                <i class="fab fa-github"></i>
+        </div>
+
+        <div class="social-content">
+            <h3>GitHub</h3>
+            <p>Explore my projects and code</p>
+        </div>
+
+        <div class="social-arrow">↗</div>
+    </a>
+
+    <a href="https://www.linkedin.com/in/adiya-parveen" target="_blank" class="social-card">
+        <div class="social-icon">
+            <i class="fab fa-linkedin-in"></i>
+        </div>
+
+        <div class="social-content">
+            <h3>LinkedIn</h3>
+            <p>View my professional journey</p>
+        </div>
+
+        <div class="social-arrow">↗</div>
+    </a>
+
+    <a href="https://www.youtube.com/@LitFaithFusion/featured" target="_blank" class="social-card">
+        <div class="social-icon">
+            <i class="fab fa-youtube"></i>
+        </div>
+
+        <div class="social-content">
+            <h3>YouTube</h3>
+            <p>Watch my insights and conversations</p>
+        </div>
+
+        <div class="social-arrow">↗</div>
+    </a>
+
+    <a href="https://medium.com/@Adiya.P" target="_blank" class="social-card">
+        <div class="social-icon">
+            <i class="fab fa-medium-m"></i>
+        </div>
+
+        <div class="social-content">
+            <h3>Medium</h3>
+            <p>Read my articles and thoughts</p>
+        </div>
+
+        <div class="social-arrow">↗</div>
+    </a>
+
+    <a href="https://www.goodreads.com/user/show/113798428-adiya" target="_blank" class="social-card">
+        <div class="social-icon">
+            <span class="goodreads-icon">g</span>
+        </div>
+
+        <div class="social-content">
+            <h3>Goodreads</h3>
+            <p>Discover books I read and recommend</p>
+        </div>
+
+        <div class="social-arrow">↗</div>
+    </a>
+
+</section>
+            </div>
+                    
+          </div>
+        </div>
+        </div>
+    </section>
+</main>
+
+
+
+<script>
+    // ---- simple SPA-like routing: show/hide pages, update active nav ----
+    const pages = {
+        home: document.getElementById('home-page'),
+        about: document.getElementById('about-page'),
+        projects: document.getElementById('projects-page'),
+        contact: document.getElementById('contact-page')
+    };
+
+    const navLinks = document.querySelectorAll('.nav-link');
+    const menuToggle = document.getElementById('menuToggle');
+    const navList = document.getElementById('navLinks');
+
+    // function to switch active page
+    function showPage(pageId) {
+        // hide all pages
+        Object.values(pages).forEach(page => {
+            if(page) page.style.display = 'none';
+        });
+        // show selected
+        if(pages[pageId]) {
+            pages[pageId].style.display = 'flex';  // home uses flex for centering, others flex also okay
+            // ensure sections with display:flex or block?
+            if(pageId !== 'home') pages[pageId].style.display = 'block';
+            // fix home hero alignment
+            if(pageId === 'home') pages[pageId].style.display = 'flex';
+        }
+        
+        // update active class on nav
+        navLinks.forEach(link => {
+            const linkPage = link.getAttribute('data-page');
+            if(linkPage === pageId) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+
+        // update browser hash without jumping (optional)
+        history.pushState(null, '', `#${pageId}`);
+    }
+
+    // event binding to nav links (both in desktop & mobile)
+    function bindNavEvents() {
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const page = link.getAttribute('data-page');
+                if(page && pages[page]) {
+                    showPage(page);
+                    // close mobile menu after click
+                    if(navList.classList.contains('show')) {
+                        navList.classList.remove('show');
+                    }
+                }
+            });
+        });
+    }
+
+    // home hero CTA "Start a project" -> contact page
+    const ctaBtn = document.querySelector('.btn-outline-light');
+    if(ctaBtn) {
+        ctaBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showPage('contact');
+        });
+    }
+
+    // also logo home click
+    const logo = document.querySelector('.logo');
+    if(logo) {
+        logo.addEventListener('click', (e) => {
+            e.preventDefault();
+            showPage('home');
+        });
+    }
+
+    // mobile menu toggle
+    if(menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            navList.classList.toggle('show');
+        });
+    }
+
+    // handle hash on page load (if any)
+    function handleHash() {
+        let hash = window.location.hash.substring(1);
+        if(hash && pages[hash]) {
+            showPage(hash);
+        } else {
+            showPage('home');
+        }
+    }
+
+    // handle contact form demo alert (just for demo)
+    const contactForm = document.getElementById('demo-contact-form');
+    if(contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('✨ Message demo: Your inquiry has been sent (simulated). Thank you for reaching out.');
+            contactForm.reset();
+        });
+    }
+
+    // initial binding and routing
+    bindNavEvents();
+    handleHash();
+
+    // optional: when using back/forward buttons
+    window.addEventListener('popstate', () => {
+        let hash = window.location.hash.substring(1);
+        if(hash && pages[hash]) showPage(hash);
+        else showPage('home');
+    });
+
+    // extra: close mobile menu if window resized above mobile break
+    window.addEventListener('resize', () => {
+        if(window.innerWidth > 800 && navList.classList.contains('show')) {
+            navList.classList.remove('show');
+        }
+    });
+</script>
+</body>
+</html>
